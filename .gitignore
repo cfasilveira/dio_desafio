@@ -1,0 +1,19 @@
+# Ignorar arquivo de variáveis de ambiente
+.env
+
+# Ignorar arquivos compilados Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorar pastas de ambiente virtual
+venv/
+.env/
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar arquivos e pastas do sistema
+.DS_Store
+Thumbs.db
