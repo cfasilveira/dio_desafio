@@ -47,10 +47,35 @@ class ContaBancaria:
         else:
             print("❌ Valor inválido.")
 
+    # Calcula o limite de cheque especial com base no saldo atual
+    def calcular_cheque_especial(self):
+    # Retorna o limite de cheque especial com base no saldo atual
+        saldo = self.saldo
+
+        if saldo < 5000:
+            return 0
+        elif saldo <= 10000:
+            return saldo * 0.10
+        elif saldo <= 20000:
+            return saldo * 0.20
+        else:
+            return saldo * 0.50
+
     def mostrar_extrato(self):
         print("\n================ EXTRATO ================")
         print(f"Cliente: {self.cliente.nome} {self.cliente.sobrenome} | CPF: {self.cliente.cpf} | Conta: {self.numero}")
         print("------------------------------------------")
         print("\n".join(self.extrato) if self.extrato else "Nenhuma movimentação.")
         print(f"\nSaldo: R$ {self.saldo:.2f}")
+        # oferta de cheque especial baseado no valor do saldo
+        limite = self.calcular_cheque_especial()
+        print(f"💳 Cheque especial disponível: R$ {limite:.2f}")
+
+        if limite > 0:
+            print("🎯 Oferta ativa: Você tem acesso ao cheque especial com base no seu saldo.")
+        else:
+            print("ℹ️ Nenhum limite de cheque especial disponível no momento.")
         print("==========================================")
+
+    
+
