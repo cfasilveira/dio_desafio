@@ -1,3 +1,5 @@
+# Exibe o menu de administração e retorna a opção escolhida pelo usuário.
+# Usado para acessar funções como cadastro e listagem de clientes.
 def menu_admin():
     return input("""
 === MENU ADMINISTRAÇÃO ===
@@ -6,6 +8,8 @@ def menu_admin():
 [3] Voltar ao menu principal
 => """)
 
+# Exibe o menu de operações disponíveis para o cliente.
+# Permite realizar depósito, saque, consultar extrato ou sair.
 def menu_cliente():
     return input("""
 === MENU CLIENTE ===
