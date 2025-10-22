@@ -1,5 +1,6 @@
 from cliente import Cliente # Importa a classe Cliente para cadastro e listagem
-from conta import ContaBancaria # Importa a classe ContaBancaria para vincular conta ao cliente
+from conta import ContaBancaria, ARQUIVO_MOVIMENTACOES # Importa a classe ContaBancaria para vincular conta ao cliente
+import csv
 
 contas = {} # Dicionário para armazenar contas criadas em tempo de execução (não persistido em arquivo)
             # chave = CPF do cliente, valor = objeto ContaBancaria
@@ -35,3 +36,30 @@ def cadastrar_cliente():
 def listar_clientes():
     # Chama método estático da classe Cliente para exibir todos os clientes cadastrados
     Cliente.listar()
+
+def relatorio_geral():
+    print("\n=== RELATÓRIO GERAL DO BANCO ===")
+    total_depositos = 0
+    total_saques = 0
+
+    if not ARQUIVO_MOVIMENTACOES.exists():
+        print("Nenhuma movimentação registrada.")
+        return
+
+    with open(ARQUIVO_MOVIMENTACOES, newline="", encoding="utf-8") as f:
+        reader = csv.reader(f)
+        for row in reader:
+            tipo = row[1]
+            valor = float(row[2])
+            if tipo == "Depósito":
+                total_depositos += valor
+            elif tipo == "Saque":
+                total_saques += valor
+
+    saldo_total = total_depositos - total_saques
+
+    print(f"📥 Total de depósitos: R$ {total_depositos:.2f}")
+    print(f"📤 Total de saques:    R$ {total_saques:.2f}")
+    print(f"💰 Saldo total no banco: R$ {saldo_total:.2f}")
+
+

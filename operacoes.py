@@ -5,7 +5,8 @@ def menu_admin():
 === MENU ADMINISTRAÇÃO ===
 [1] Cadastrar cliente (já cria conta)
 [2] Listar clientes
-[3] Voltar ao menu principal
+[3] Relatório geral do banco
+[4] Voltar ao menu principal
 => """)
 
 # Exibe o menu de operações disponíveis para o cliente.

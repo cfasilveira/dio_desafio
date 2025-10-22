@@ -1,5 +1,5 @@
 from operacoes import menu_admin, menu_cliente
-from admin import cadastrar_cliente, listar_clientes
+from admin import cadastrar_cliente, listar_clientes, relatorio_geral
 import csv
 from cliente import ARQUIVO_CLIENTES, Cliente
 from conta import ContaBancaria
@@ -25,6 +25,8 @@ def main():
                 elif opcao == "2":
                     listar_clientes()
                 elif opcao == "3":
+                    relatorio_geral()
+                elif opcao == "4":
                     break
                 else:
                     print("❌ Opção inválida.")
